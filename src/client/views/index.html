@@ -12,35 +12,43 @@
 
     <body>
 
-        <header>
+        <!-- <header>
             <div class="">
                 Logo
             </div>
             <div class="">
                 navigation
             </div>
-        </header>
+        </header> -->
 
         <main>
             <section>
+                <h2 class="description">
+                    Enter a URL to a news article to receive customized Natural Language Process data via APIs provided by <a href='https://www.meaningcloud.com/'>Meaning Cloud</a>.
+                </h2>
                 <form onsubmit="return handleSubmit(event)">
                     <input id="name" type="text" name="input" value="" placeholder="Enter News URL">
-                    <input id="submit-button" type="submit" name="" value="submit">
+                    <input id="submit-button" type="submit" name="" value="SUBMIT">
                 </form>
-            </section>
+                <h4 id="error-message">Error: Please enter text.</h4>
+
+                <div id="results-master-container">
+                    <div class="results-header">Results:</div>
+                    <div id="results-data-container">
+                        <!-- <h3 id="submitted-url" class="data-piece"></h3> -->
 
 
-            <section id="results">
-                <strong>Results:</strong>
-                <h3 id="submitted-url"></h3>
-                <div id="results-container"></div>
+                    </div>
+
+                    <!-- <div id="results-data-container"><div>Confidence : 86</div><div>Subjectivity : SUBJECTIVE</div><div>Score : POSITIVE</div><div>Agreement : DISAGREEMENT</div><div>Irony : NONIRONIC</div></div> -->
+
+                </div>
             </section>
-            <h4 id="error-message">Error: Please enter text.</h4>
         </main>
-
-        <footer>
+       
+        <!-- <footer>
             <p>This is a footer</p>
-        </footer>
+        </footer> -->
 
     </body>
 </html>

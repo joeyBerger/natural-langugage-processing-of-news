@@ -50,7 +50,6 @@ submitButton.addEventListener('click', async (e) => {
 
         //check for error
         const error = res.status === 409
-        console.log(res)
 
         res = await res.json()
 

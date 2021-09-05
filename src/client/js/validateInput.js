@@ -1,7 +1,7 @@
 import {errorCodes} from "./errorCodes";
 
 //return validity of url
-const returnIsValidURL = (url) => {
+const returnIsValidURL = url => {
     //https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
@@ -13,7 +13,7 @@ const returnIsValidURL = (url) => {
 }
 
 //function that validates user input and returns submitted url if valid, otherwise throws error
-const validateInput = (url) => {
+const validateInput = url => {
     if (!url) throw errorCodes.emptyField;
     if (!returnIsValidURL(url)) throw errorCodes.invalidURL;
     return url

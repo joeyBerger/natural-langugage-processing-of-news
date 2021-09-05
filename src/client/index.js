@@ -1,5 +1,5 @@
 import {handleSubmit} from './js/formHandler'
-import {handleAPIrequest} from './js/handleAPIrequest'
+import {handleError} from './js/handleError'
 import './styles/resets.scss'
 import './styles/base.scss'
 import './styles/form.scss'
@@ -26,27 +26,46 @@ const submitButton = document.getElementById('submit-button');
 
 //add event listner to submit button
 submitButton.addEventListener('click', async (e) => {
-    let url;
+    let url, res;
     resultsMasterContainer.style.display = 'none';
     errorMessage.style.display = 'none';
     try {url = handleSubmit(e)}
     catch (e) {
-        errorMessage.innerHTML = `Error : ${e}`;
-        errorMessage.style.display = 'block';
+        handleError(errorMessage,e)
         return
     }
 
     //show processing message
     processingMessage.style.display = 'block';
+    
+    //invoke post request to server
+    try {
+        res = await fetch('/postTextToMeaningCloud',{
+            method: 'POST', 
+            mode: 'cors',
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({url})
+        })
 
-    const res = await handleAPIrequest(url)
+        //check for error
+        const error = res.status === 409
+        console.log(res)
+
+        res = await res.json()
+
+        //hide processing message
+        processingMessage.style.display = 'none';
+
+        if (error) throw res.error;
+
+    } catch(e) {
+        handleError(errorMessage,e)
+        return
+    }
 
     //show resultsMasterContainer container
     resultsMasterContainer.style.display = 'block';
-
-    //hide processing message
-    processingMessage.style.display = 'none';
-
 
     //remove any existing children from resultsMasterContainer container
     while (resultsDataContainer.firstChild) {

@@ -16,22 +16,19 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
+//invokes post request to meaning cloud and sends meaningful data to client
 app.post('/postTextToMeaningCloud', async function (req, res) {
-    // const mcResponse = await axios({
-    //     method: 'post',
-    //     url: 'https://api.meaningcloud.com/sentiment-2.1',
-    //     data: {
-    //         key : process.env.API_KEY,
-    //         // txt: req.body.text,
-    //         url : req.body.url,
-    //         lang: 'en'
-    //     },
-    //     redirect: 'follow'
-    // })
-    // res.send(buildCustomObject(mcResponse.data))
-
-    console.log(req.body.url)
-    res.send({score: 'POSITIVE', agreement: 'DISAGREEMENT', subjectivity: 'SUBJECTIVE', confidence: '86', irony: 'NONIRONIC'})
+    const mcResponse = await axios({
+        method: 'post',
+        url: 'https://api.meaningcloud.com/sentiment-2.1',
+        data: {
+            key : process.env.API_KEY,
+            url : req.body.url,
+            lang: 'en'
+        },
+        redirect: 'follow'
+    })
+    res.send(buildCustomObject(mcResponse.data))
 })
 
 // designates what port the app will listen to for incoming requests

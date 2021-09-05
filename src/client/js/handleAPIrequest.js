@@ -1,3 +1,4 @@
+//handles api request and processing of recieved data
 const handleAPIrequest = async url => {
     let res = await fetch('/postTextToMeaningCloud',{
         method: 'POST', 

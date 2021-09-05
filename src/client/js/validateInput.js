@@ -13,7 +13,7 @@ const returnIsValidURL = (url) => {
 
 const validateInput = (url) => {
     if (!url) throw errorCodes.emptyField;
-    if (!returnIsValidURL(url)) throw errorCodes.noURL;
+    if (!returnIsValidURL(url)) throw errorCodes.invalidURL;
     return url
 }
 

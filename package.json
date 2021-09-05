@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node src/server/index.js",
     "build-prod-og": "webpack --config webpack.prod.js",
     "build-prod": "webpack --config webpack.prod.js --open",
@@ -25,9 +25,14 @@
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^27.1.0",
     "babel-loader": "^8.0.6",
+    "babel-preset-jest": "^27.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^27.1.0",
+    "regenerator-runtime": "^0.13.9",
     "webpack-dev-server": "^3.7.2"
   }
 }

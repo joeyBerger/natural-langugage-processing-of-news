@@ -1,6 +1,12 @@
 import {handleSubmit} from './js/formHandler'
 import {handleAPIrequest} from './js/handleAPIrequest'
 
+import './styles/resets.scss'
+import './styles/base.scss'
+import './styles/form.scss'
+import './styles/footer.scss'
+import './styles/header.scss'
+
 const results = document.getElementById('results');
 results.style.display = 'none';
 

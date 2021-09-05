@@ -22,12 +22,12 @@ app.post('/postTextToMeaningCloud', async function (req, res) {
         url: 'https://api.meaningcloud.com/sentiment-2.1',
         data: {
             key : process.env.API_KEY,
-            txt: req.body.text,
+            // txt: req.body.text,
+            url : req.body.url,
             lang: 'en'
         },
         redirect: 'follow'
     })
-    console.log(mcResponse)
     res.send(buildCustomObject(mcResponse.data))
     // res.send({score: 'POSITIVE', agreement: 'DISAGREEMENT', subjectivity: 'SUBJECTIVE', confidence: '86', irony: 'NONIRONIC'})
 })

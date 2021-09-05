@@ -3,7 +3,7 @@ import { handleSubmit } from './js/formHandler'
 const results = document.getElementById('results')
 results.style.display = 'none';
 
-const submittedText = document.getElementById('submitted-text')
+const submittedURL = document.getElementById('submitted-url')
 const testButton = document.getElementById('test-button')
 
 const errorMessage = document.getElementById('error-message')
@@ -12,10 +12,10 @@ errorMessage.style.display = 'none'
 const resultsContainer = document.getElementById('results-container')
 
 testButton.addEventListener('click',async (e) => {
-    let text;
+    let url;
     results.style.display = 'none';
     errorMessage.style.display = 'none'
-    try {text = handleSubmit(e)}
+    try {url = handleSubmit(e)}
     catch (e) {
         errorMessage.style.display = 'block'
         return
@@ -25,11 +25,11 @@ testButton.addEventListener('click',async (e) => {
         mode: 'cors',
         credentials: 'same-origin',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({text})
+        body: JSON.stringify({url})
     })
     res = await res.json()
     results.style.display = 'block';
-    submittedText.innerHTML = text
+    submittedURL.innerHTML = url
 
     const subjects = ["confidence","subjectivity","score","agreement","irony"]
     subjects.forEach(k => {
